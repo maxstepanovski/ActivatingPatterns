@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cheese_holder_layout">
+
+    <ImageView
+        android:layout_width="@dimen/item_image_size"
+        android:layout_height="@dimen/item_image_size"
+        android:id="@+id/item_image"
+        android:layout_gravity="center_vertical|end"
+        android:layout_margin="@dimen/item_image_margin"
+        android:src="@drawable/cheddar"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:paddingBottom="@dimen/item_name_paddingBottom"
+        android:paddingLeft="@dimen/item_name_paddingLeft"
+        tools:text="description"
+        android:textSize="@dimen/item_name_textSize"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/action_add"
+        android:layout_gravity="center_vertical|end|bottom"
+        android:layout_marginEnd="@dimen/action_marginEnd"
+        android:padding="@dimen/action_padding"
+        android:paddingEnd="@dimen/action_paddingEnd"
+        android:paddingStart="@dimen/action_paddingStart"
+        tools:text="Add"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/action_textSize"
+        style="?attr/borderlessButtonStyle"/>
+
+</LinearLayout>
