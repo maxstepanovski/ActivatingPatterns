@@ -15,6 +15,7 @@
         android:src="@drawable/cheddar"/>
     <TextView
         android:layout_width="0dp"
+        android:id="@+id/item_name"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
@@ -31,7 +32,7 @@
         android:padding="@dimen/action_padding"
         android:paddingEnd="@dimen/action_paddingEnd"
         android:paddingStart="@dimen/action_paddingStart"
-        tools:text="Add"
+        android:text="@string/add_cheese"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/action_textSize"
         style="?attr/borderlessButtonStyle"/>
