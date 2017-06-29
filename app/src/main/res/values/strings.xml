@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ActivatingPatterns</string>
     <string name="add_cheese">Add</string>
+    <string name="dialog_message">Eat now or continue building your sandwich</string>
+    <string name="positive_action_message">Eat now</string>
+    <string name="negative_action_message">Continue building</string>
+    <string name="dialog_title">Checkout</string>
 </resources>
