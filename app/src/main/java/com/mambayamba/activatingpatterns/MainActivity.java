@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -24,6 +25,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView cheesesList;
+    private ItemDataAdapter adapter;
+    private List<Cheese> cheeses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         cheesesList = (RecyclerView) findViewById(R.id.recycler_view);
-        RecyclerView.Adapter adapter = new ItemDataAdapter(buildList());
+        adapter = new ItemDataAdapter(buildList());
         cheesesList.setLayoutManager(new LinearLayoutManager(this));
         cheesesList.addItemDecoration(new ItemDivider(this, R.drawable.item_divider));
-        cheesesList.setHasFixedSize(true);
+        cheesesList.setHasFixedSize(false);
         cheesesList.setAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -43,6 +46,26 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setImageResource(R.drawable.ic_action_add);
         buildDialog(fab);
+
+        initItemTouchHelper();
+    }
+
+    private void initItemTouchHelper(){
+        ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                adapter.removeItem(position);
+
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(cheesesList);
     }
 
     private void buildDialog(FloatingActionButton fab) {
@@ -74,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Cheese> buildList(){
-        List<Cheese> cheeses = new ArrayList<>();
+        cheeses = new ArrayList<>();
         cheeses = new ArrayList<>();
         cheeses.add(new Brie());
         cheeses.add(new Butterkase());

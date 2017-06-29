@@ -38,4 +38,10 @@ public class ItemDataAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     public int getItemCount() {
         return cheeses.size();
     }
+
+    public void removeItem(int position){
+        cheeses.remove(position);
+        notifyItemChanged(position);
+        notifyItemRangeChanged(position, cheeses.size());
+    }
 }
