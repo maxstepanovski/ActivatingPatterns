@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         cheesesList = (RecyclerView) findViewById(R.id.recycler_view);
         RecyclerView.Adapter adapter = new ItemDataAdapter(buildList());
         cheesesList.setLayoutManager(new LinearLayoutManager(this));
+        cheesesList.addItemDecoration(new ItemDivider(this, R.drawable.item_divider));
         cheesesList.setHasFixedSize(true);
         cheesesList.setAdapter(adapter);
     }
